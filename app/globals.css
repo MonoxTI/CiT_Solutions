@@ -1,136 +1,121 @@
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Share+Tech+Mono&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Space+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
 
 :root {
-  --blue: #0EA5E9;
-  --blue-dim: #0284C7;
-  --blue-glow: rgba(14, 165, 233, 0.25);
-  --navy: #080C14;
-  --navy-mid: #0D1420;
-  --navy-light: #111827;
-  --steel: #1E2D42;
-  --muted: #4A6080;
-  --text-dim: #8BA3C0;
-  --text: #CBD5E1;
-  --white: #F0F6FF;
-  --accent: #38BDF8;
-  --red: #EF4444;
-  --green: #10B981;
+  --bg:         #050A18;
+  --bg-2:       #080F22;
+  --bg-3:       #0C1630;
+  --surface:    #0F1D3A;
+  --border:     #1A2D52;
+  --blue:       #2563EB;
+  --blue-light: #3B82F6;
+  --blue-pale:  #60A5FA;
+  --blue-glow:  rgba(37,99,235,0.2);
+  --white:      #FFFFFF;
+  --text:       #CBD5E1;
+  --text-dim:   #64748B;
+  --text-faint: #2D3F5C;
+  --green:      #10B981;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Barlow', sans-serif;
-  background: var(--navy);
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5 {
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 700;
+h1, h2, h3, h4 {
+  font-family: 'Syne', sans-serif;
   color: var(--white);
-  letter-spacing: 0.02em;
+  line-height: 1.1;
 }
 
-.mono {
-  font-family: 'Share Tech Mono', monospace;
-}
-
-/* Grid overlay texture */
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(14, 165, 233, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(14, 165, 233, 0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
-
-/* Glow utilities */
-.glow-blue {
-  box-shadow: 0 0 30px var(--blue-glow), 0 0 60px rgba(14, 165, 233, 0.1);
-}
-
-.text-glow {
-  text-shadow: 0 0 20px rgba(14, 165, 233, 0.6);
-}
-
-/* Section label */
-.section-label {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  color: var(--blue);
+.eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+  color: var(--blue-pale);
 }
 
-/* Horizontal rule */
-.hr-blue {
-  height: 1px;
-  background: linear-gradient(90deg, var(--blue), transparent);
-  border: none;
+.rule { height: 1px; background: var(--border); border: none; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.card:hover {
+  border-color: var(--blue);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(37,99,235,0.15);
+}
+.card-accent { border-left: 3px solid var(--blue); }
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--blue);
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.btn-primary:hover {
+  background: var(--blue-light);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(37,99,235,0.35);
 }
 
-/* Corner brackets */
-.bracket::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 16px; height: 16px;
-  border-top: 2px solid var(--blue);
-  border-left: 2px solid var(--blue);
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
 }
-.bracket::after {
-  content: '';
-  position: absolute;
-  bottom: 0; right: 0;
-  width: 16px; height: 16px;
-  border-bottom: 2px solid var(--blue);
-  border-right: 2px solid var(--blue);
+.btn-ghost:hover { border-color: var(--blue); color: var(--blue-pale); }
+
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(37,99,235,0.1) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--navy); }
-::-webkit-scrollbar-thumb { background: var(--steel); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--blue-dim); }
+.section { padding: 6rem 0; }
 
-/* Fade in animation */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--blue); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.85); }
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-@keyframes scan {
-  0% { transform: translateY(-100%); opacity: 0.6; }
-  100% { transform: translateY(100vh); opacity: 0; }
-}
-
-@keyframes pulse-ring {
-  0% { transform: scale(1); opacity: 0.6; }
-  100% { transform: scale(1.5); opacity: 0; }
-}
-
-.animate-fadeInUp {
-  animation: fadeInUp 0.7s ease forwards;
-}
-
-.animate-blink {
-  animation: blink 1s step-end infinite;
-}
+.fade-up { animation: fadeUp 0.65s ease both; }
