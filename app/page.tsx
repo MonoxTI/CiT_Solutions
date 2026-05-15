@@ -9,7 +9,7 @@ import Footer from "./Footer";
 
 export default function Home() {
   return (
-    <main style={{ background:"#050A18", minHeight:"100vh", color:"#CBD5E1", overflowX:"hidden" }}>
+    <main style={{ background: "#000", minHeight: "100vh", color: "#B0B0B0", overflowX: "hidden" }}>
       <Navbar />
       <Hero />
       <About />

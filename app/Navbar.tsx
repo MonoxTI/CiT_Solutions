@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -19,34 +20,38 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
-  const navStyle: React.CSSProperties = {
-    position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
-    transition: "all 0.3s",
-    background: scrolled ? "rgba(5,10,24,0.97)" : "transparent",
-    backdropFilter: scrolled ? "blur(12px)" : "none",
-    borderBottom: scrolled ? "1px solid #1A2D52" : "1px solid transparent",
-  };
-
   return (
-    <nav style={navStyle}>
-      <div style={{ maxWidth:1280, margin:"0 auto", padding:"0 2.5rem", height:72, display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+    <nav style={{
+      position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
+      transition: "all 0.3s",
+      background: scrolled ? "rgba(0,0,0,0.97)" : "transparent",
+      backdropFilter: scrolled ? "blur(20px)" : "none",
+      borderBottom: scrolled ? "1px solid #1E1E1E" : "1px solid transparent",
+    }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 2.5rem", height: 76, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+
         {/* Logo */}
-        <a href="#home" style={{ display:"flex", alignItems:"center", gap:12, textDecoration:"none" }}>
-          <div style={{ width:34, height:34, background:"#2563EB", borderRadius:6, display:"flex", alignItems:"center", justifyContent:"center" }}>
-            <span style={{ fontFamily:"Syne,sans-serif", fontWeight:800, color:"#fff", fontSize:14 }}>C</span>
+        <a href="#home" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none" }}>
+          <Image src="/logo.jpeg" alt="CiT Solutions" width={46} height={46} loading="eager"
+            style={{ borderRadius: 4, objectFit: "cover", filter: "brightness(1.1)" }} />
+          <div>
+            <div style={{ fontFamily: "Syne,sans-serif", fontWeight: 800, fontSize: 15, color: "#fff", letterSpacing: "0.04em" }}>
+              Ci<span style={{ color: "#B8B8B8" }}>T</span> solutions
+            </div>
+            <div style={{ fontFamily: "Space Mono,monospace", fontSize: "0.5rem", color: "#444", letterSpacing: "0.2em", textTransform: "uppercase", marginTop: 2 }}>
+              Technology. Innovation. Solutions.
+            </div>
           </div>
-          <span style={{ fontFamily:"Syne,sans-serif", fontWeight:700, color:"#fff", fontSize:18, letterSpacing:"-0.01em" }}>
-            CiT <span style={{ color:"#3B82F6" }}>Solutions</span>
-          </span>
         </a>
 
         {/* Desktop links */}
-        <ul style={{ display:"flex", gap:36, listStyle:"none", margin:0, padding:0 }} className="hide-mobile">
+        <ul style={{ display: "flex", gap: 40, listStyle: "none" }} className="hide-mobile">
           {links.map(l => (
             <li key={l.label}>
-              <a href={l.href} style={{ fontFamily:"DM Sans,sans-serif", fontSize:14, color:"#64748B", textDecoration:"none", transition:"color 0.2s" }}
-                onMouseEnter={e => (e.currentTarget.style.color="#fff")}
-                onMouseLeave={e => (e.currentTarget.style.color="#64748B")}>
+              <a href={l.href}
+                style={{ fontFamily: "DM Sans,sans-serif", fontSize: 13, color: "#606060", textDecoration: "none", letterSpacing: "0.04em", transition: "color 0.2s" }}
+                onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
+                onMouseLeave={e => (e.currentTarget.style.color = "#606060")}>
                 {l.label}
               </a>
             </li>
@@ -54,31 +59,27 @@ export default function Navbar() {
         </ul>
 
         {/* CTA */}
-        <a href="#contact" className="hide-mobile" style={{ display:"inline-flex", alignItems:"center", gap:8, background:"#2563EB", color:"#fff", fontFamily:"Syne,sans-serif", fontWeight:700, fontSize:13, letterSpacing:"0.05em", textTransform:"uppercase", padding:"10px 22px", borderRadius:6, textDecoration:"none", transition:"background 0.2s" }}
-          onMouseEnter={e => (e.currentTarget.style.background="#3B82F6")}
-          onMouseLeave={e => (e.currentTarget.style.background="#2563EB")}>
+        <a href="#contact" className="hide-mobile btn-primary" style={{ padding: "9px 20px" }}>
           Get a Quote
         </a>
 
-        {/* Mobile burger */}
-        <button onClick={() => setOpen(!open)} style={{ background:"none", border:"none", cursor:"pointer", padding:8, display:"flex", flexDirection:"column", gap:5 }} className="show-mobile">
-          {[0,1,2].map(i => (
-            <span key={i} style={{ display:"block", width:22, height:2, background:"#fff", borderRadius:2, transition:"all 0.2s",
-              transform: open ? (i===0?"rotate(45deg) translate(5px,5px)":i===2?"rotate(-45deg) translate(5px,-5px)":"none") : "none",
-              opacity: open && i===1 ? 0 : 1 }} />
+        {/* Burger */}
+        <button onClick={() => setOpen(!open)} style={{ background: "none", border: "none", cursor: "pointer", padding: 8, display: "flex", flexDirection: "column", gap: 5 }} className="show-mobile">
+          {[0, 1, 2].map(i => (
+            <span key={i} style={{ display: "block", width: 22, height: 2, background: "#fff", borderRadius: 2, transition: "all 0.2s",
+              transform: open ? (i === 0 ? "rotate(45deg) translate(5px,5px)" : i === 2 ? "rotate(-45deg) translate(5px,-5px)" : "none") : "none",
+              opacity: open && i === 1 ? 0 : 1 }} />
           ))}
         </button>
       </div>
 
-      {/* Mobile menu */}
       {open && (
-        <div style={{ background:"#080F22", borderTop:"1px solid #1A2D52", padding:"1.5rem 2rem", display:"flex", flexDirection:"column", gap:16 }}>
+        <div style={{ background: "#080808", borderTop: "1px solid #1E1E1E", padding: "1.5rem 2rem", display: "flex", flexDirection: "column", gap: 18 }}>
           {links.map(l => (
             <a key={l.label} href={l.href} onClick={() => setOpen(false)}
-              style={{ fontFamily:"DM Sans,sans-serif", color:"#CBD5E1", textDecoration:"none", fontSize:16 }}>{l.label}</a>
+              style={{ fontFamily: "DM Sans,sans-serif", color: "#B0B0B0", textDecoration: "none", fontSize: 15 }}>{l.label}</a>
           ))}
-          <a href="#contact" onClick={() => setOpen(false)}
-            style={{ marginTop:8, background:"#2563EB", color:"#fff", fontFamily:"Syne,sans-serif", fontWeight:700, fontSize:13, textTransform:"uppercase", padding:"12px 0", borderRadius:6, textDecoration:"none", textAlign:"center" }}>
+          <a href="#contact" onClick={() => setOpen(false)} className="btn-primary" style={{ textAlign: "center", marginTop: 8 }}>
             Get a Quote
           </a>
         </div>
