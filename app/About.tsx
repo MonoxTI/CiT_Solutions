@@ -12,25 +12,38 @@ export default function About() {
     <section id="about" style={{ padding: "6rem 0", background: "#080808" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 2.5rem" }}>
 
-        {/* Header */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "end", marginBottom: 64 }} className="about-grid">
+        {/* Header grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center", marginBottom: 64 }} className="about-top">
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 24 }}>
               <div style={{ width: 2, height: 48, background: "#fff" }} />
               <span style={{ fontFamily: "Space Mono,monospace", fontSize: "0.62rem", letterSpacing: "0.22em", textTransform: "uppercase", color: "#606060" }}>About CiT Solutions</span>
             </div>
-            <h2 style={{ fontFamily: "Syne,sans-serif", fontWeight: 800, fontSize: "clamp(2rem,4vw,3.2rem)", color: "#fff" }}>
+            <h2 style={{ fontFamily: "Syne,sans-serif", fontWeight: 800, fontSize: "clamp(2rem,4vw,3.2rem)", color: "#fff", marginBottom: 24 }}>
               Technology That Works.<br />
               <span style={{ background: "linear-gradient(135deg,#fff,#777)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Every Single Day.</span>
             </h2>
-          </div>
-          <div>
             <p style={{ fontFamily: "DM Sans,sans-serif", color: "#666", lineHeight: 1.8, marginBottom: 18 }}>
-              CiT Solutions is a South African IT infrastructure, networking, CCTV, and managed technology solutions company. We deliver end-to-end technology services — from structured cabling and server deployment to smart surveillance and school connectivity.
+              CiT Solutions is a South African IT infrastructure, networking, CCTV, and managed technology solutions company. We deliver end-to-end technology services from structured cabling and server deployment to smart surveillance and school connectivity.
             </p>
             <p style={{ fontFamily: "DM Sans,sans-serif", color: "#666", lineHeight: 1.8 }}>
               Whether you're a small business, a school, or an enterprise deploying multi-branch infrastructure — we build, secure, and maintain it all.
             </p>
+          </div>
+
+          {/* Photo */}
+          <div style={{ position: "relative", borderRadius: 4, overflow: "hidden", height: 380 }}>
+            <img
+              src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=900&q=80&auto=format&fit=crop"
+              alt="IT professional working"
+              style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.8) contrast(1.05)", display: "block" }}
+            />
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #080808 0%, transparent 60%)" }} />
+            {/* Floating label */}
+            <div style={{ position: "absolute", bottom: 20, left: 20, background: "rgba(0,0,0,0.85)", border: "1px solid #262626", padding: "10px 16px", borderRadius: 3 }}>
+              <div style={{ fontFamily: "Space Mono,monospace", fontSize: "0.55rem", color: "#555", letterSpacing: "0.14em", textTransform: "uppercase" }}>Est.</div>
+              <div style={{ fontFamily: "Syne,sans-serif", fontWeight: 800, fontSize: "1.4rem", color: "#fff" }}>2015</div>
+            </div>
           </div>
         </div>
 
@@ -56,7 +69,7 @@ export default function About() {
         </div>
       </div>
       <style>{`
-        @media(max-width:900px){ .about-grid{grid-template-columns:1fr!important} }
+        @media(max-width:900px){ .about-top{grid-template-columns:1fr!important} }
         @media(max-width:768px){ .pillars-grid{grid-template-columns:1fr 1fr!important} }
         @media(max-width:480px){ .pillars-grid{grid-template-columns:1fr!important} }
       `}</style>
